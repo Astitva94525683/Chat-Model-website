@@ -1,0 +1,88 @@
+{
+  "theme": "DARK",
+  "archetype": "4 (Swiss & High-Contrast)",
+  "domain": "Developer Tools / Webhook testing",
+  "emotional_tone": "Technical, precise, utilitarian, raw but polished",
+  "typography": {
+    "fonts": [
+      {
+        "name": "Outfit",
+        "type": "Heading",
+        "css_class": "font-sans",
+        "link": "https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap"
+      },
+      {
+        "name": "JetBrains Mono",
+        "type": "Body/Code",
+        "css_class": "font-mono",
+        "link": "https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&display=swap"
+      }
+    ],
+    "rules": [
+      "Use Outfit for headers, navigation, and primary CTAs.",
+      "Use JetBrains Mono for chat messages, webhook URLs, timestamps, and metadata.",
+      "H1-H3 must use tracking-tight.",
+      "Overlines/Labels must use uppercase, tiny size (text-xs), wide spacing (tracking-[0.2em])."
+    ]
+  },
+  "colors": {
+    "background": "#09090B",
+    "surface": "#121214",
+    "border": "#27272A",
+    "primary_accent": "#EAB308",
+    "primary_accent_hover": "#FACC15",
+    "text_primary": "#FAFAFA",
+    "text_secondary": "#A1A1AA",
+    "error": "#EF4444",
+    "success": "#22C55E",
+    "rules": [
+      "Never use pure black or pure white. Always tint greys.",
+      "Primary accent (Volt Yellow) is strictly for active states, primary CTA, and left-borders of AI responses."
+    ]
+  },
+  "layout": {
+    "strategy": "The 'Control Room' Grid (For Dashboards/Analytics)",
+    "sidebar": "w-72 border-r border-border/40 bg-surface flex flex-col hidden md:flex",
+    "main_chat": "flex-1 flex flex-col bg-background relative",
+    "header": "h-16 border-b border-border/40 flex items-center px-6 justify-between shrink-0 bg-surface/50 backdrop-blur-md",
+    "input_area": "p-4 sm:p-6 border-t border-border/40 bg-background/80 backdrop-blur-md"
+  },
+  "components": {
+    "webhook_input": "Use pure functional styling. JetBrains Mono font. Border color changes to primary_accent on focus. Must include data-testid='webhook-url-input'.",
+    "chat_bubble_user": "Flat, rectangular, bg-surface, border border-border/40, text-right self-end max-w-[85%] sm:max-w-[70%] p-4. No rounded corners. JetBrains Mono.",
+    "chat_bubble_ai": "Flat, rectangular, bg-transparent, border-l-2 border-primary_accent pl-4 py-2 text-left self-start w-full max-w-4xl. No rounded corners. JetBrains Mono.",
+    "buttons": "Sharp edges (rounded-none). Primary: bg-primary_accent text-black hover:bg-primary_accent_hover. Secondary: border border-border/40 text-text_primary hover:bg-surface.",
+    "loading_indicator": "Terminal style blinking cursor or ASCII animation (e.g., '> Awaiting n8n response...') instead of generic spinners.",
+    "sidebar_item": "Hover state: bg-background border-l-2 border-primary_accent text-primary_accent. Default: text-text_secondary border-l-2 border-transparent."
+  },
+  "surfaces": {
+    "strategy": "Grid Borders (The 'Technical' Look). Expose the skeleton. Container uses border-collapse layout.",
+    "card": "Flat background, 1px subtle border, no shadow. Sharp corners (rounded-none)."
+  },
+  "motion": {
+    "hover": "Instant or very fast (0.1s) transitions. Keep it snappy and technical.",
+    "chat_entrance": "Slide up slightly and fade in using framer-motion.",
+    "page_transition": "Instant, no fluff."
+  },
+  "testing": {
+    "rules": [
+      "All interactive elements MUST include data-testid.",
+      "Use kebab-case, role-based naming (e.g., 'webhook-url-input', 'send-message-button', 'chat-history-item', 'clear-chat-button').",
+      "Ensure the chat container has data-testid='chat-messages-container'."
+    ]
+  },
+  "media": {
+    "image_urls": {}
+  },
+  "instructions_to_main_agent": [
+    "Use Tailwind CSS purely. Install required Google Fonts (Outfit, JetBrains Mono) via standard imports in index.css.",
+    "Implement Shadcn components but aggressively customize them: strip away all rounded corners (use `rounded-none` globally) to match the Brutalist/Technical vibe.",
+    "The application is for testing n8n webhooks. The header should have a settings panel or input for the Webhook URL and a connection status indicator (reachable/unreachable).",
+    "Chat messages must be mapped to JetBrains Mono font to look like log outputs.",
+    "For AI messages, don't use typical chat bubbles. Use full-width log-style rows with a left accent border (Volt Yellow).",
+    "Build a sidebar for chat session history. Provide a 'New Chat' button.",
+    "Do not use generic Inter font. Do not use teal or purple.",
+    "App uses React with `.js` files, NO `.tsx` files. Configure Shadcn to output JavaScript if necessary, or just use vanilla components.",
+    "Ensure data-testid attributes are comprehensively added to all inputs, buttons, and message rows for automated testing."
+  ]
+}
